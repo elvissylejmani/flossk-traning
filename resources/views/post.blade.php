@@ -19,14 +19,25 @@
 
     <form action="/post" method="POST">
         @csrf
-        User:<input type="text" name="author_id" required>
-        Title:<input type="text" name="title" required>
-        Des:<input type="text" name="description" required>
-        slug:<input type="text" name="slug" required>
-        Published:<input type="date" name="published" required>
+        User:<input type="text" name="author_id" value="{{ old('author_id') }}" required>
+        Title:<input type="text" name="title" value="{{ old('title') }}" required>
+        Des:<input type="text" name="description" value="{{ old('description') }}" required>
+        slug:<input type="text" name="slug" value="{{ old('slug') }}" required>
+        Published:<input type="date" name="published" value="{{ old('published') }}" required>
 
         <input type="submit">
     </form>
+
+    <br>
+
+    @foreach ($posts as $post)
+        <br>
+        Author ID:{{ $post['author_id'] }}
+        Title: {{ $post['title'] }}
+        Description:{{ $post['description'] }}
+        Slug:{{ $post['slug'] }}
+        Published:{{ $post['published'] }}
+    @endforeach
 </body>
 
 </html>
