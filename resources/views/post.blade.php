@@ -9,13 +9,21 @@
 </head>
 
 <body>
+    @if (Session::has('message'))
+        {{ Session::get('message') }}
+    @endif
+
+    @if ($errors->has('author_id'))
+        {{ $errors->first('author_id') }}
+    @endif
+
     <form action="/post" method="POST">
         @csrf
-        User:<input type="text" name="author_id">
-        Title:<input type="text" name="title">
-        Des:<input type="text" name="description">
-        slug:<input type="text" name="slug">
-        Published:<input type="date" name="published">
+        User:<input type="text" name="author_id" required>
+        Title:<input type="text" name="title" required>
+        Des:<input type="text" name="description" required>
+        slug:<input type="text" name="slug" required>
+        Published:<input type="date" name="published" required>
 
         <input type="submit">
     </form>

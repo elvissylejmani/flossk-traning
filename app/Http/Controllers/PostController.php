@@ -14,15 +14,16 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        $data = $request->validate([
+            'author_id' => 'required|integer',
+            'title' => 'required|max:250',
+            'description' => 'required|max:200000',
+            'slug' => 'required|max:200',
+            'published' => 'required|date'
+        ]);
 
-        $data = [
-            'author_id' => $request->input('author_id'),
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'slug' => $request->input('slug'),
-            'published' => $request->input('published'),
-        ];
-        dd(Post::create($data));
+        Post::create($data);
+
+        return back()->with("message", "Post has been saved");
     }
 }
