@@ -31,6 +31,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        // in the future should be casted from model
         $post['published'] = Carbon::parse($post['published'])->format('Y-m-d');
         return view('posts.edit', ['post' => $post]);
     }
