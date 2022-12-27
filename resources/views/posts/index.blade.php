@@ -37,6 +37,11 @@
         Description:{{ $post['description'] }}
         Slug:{{ $post['slug'] }}
         Published:{{ $post['published'] }}
+        <a href="post/{{ $post['id'] }}">Edit</a>
+        <form action="/post/{{ $post['id'] }}" method="POST">
+            @csrf
+            @method("DELETE") <input type="submit" name="" id="" value="delete">
+        </form>
     @endforeach
 
     {{ $posts->links() }}

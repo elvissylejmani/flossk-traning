@@ -49,4 +49,10 @@ class PostController extends Controller
         $post->update($data);
         return back()->with("message", "Post has been updated");
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return back()->with("message", "Post has been deleted");
+    }
 }
