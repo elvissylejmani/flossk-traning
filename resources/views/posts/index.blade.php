@@ -38,6 +38,8 @@
         Slug:{{ $post['slug'] }}
         Published:{{ $post['published'] }}
     @endforeach
+
+    {{ $posts->links() }}
 </body>
 
 </html>

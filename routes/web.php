@@ -19,4 +19,6 @@ Route::get('/', [TestController::class, 'index']);
 Route::delete('/', [TestController::class, 'store']);
 
 Route::get('/post', [PostController::class, 'index']);
+Route::get('/post/{post}', [PostController::class, 'edit']);
 Route::post('/post', [PostController::class, 'store'])->name('post');
+Route::patch('/post/{post}', [PostController::class, 'update']);
